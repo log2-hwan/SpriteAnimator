@@ -1,29 +1,54 @@
-SpriteAnimator
+#SpriteAnimator
 ==============
 
 sprite animation for css3 keyframe animation
 
-Usage
+##Usage
 
-SpriteAnimation.addAnimation
+###SpriteAnimation.addAnimation
 
- * name - name of animation
- * config - configuration of animation
- * selector - selector of html elements for displaying animation,
- * duration - duration of animation,
- * size - size of el
- *  = width - width of el in pixel
- *	= height - height of el in pixel
- * sprite - sprite using in animation
- * 	= cellSize - size of sprite cell
- *		1) width - width of cell in pixel
- * 		2) height - height of cell in pixel
- *	= url - url of sprite image
+    1. name - name of animation
+    2. configs - configuration of animation
+        1) selector - selector of html elements for displaying animation,
+        2) duration - duration of animation,
+        3) size - size of el
+            1] width - width of el in pixel
+            2] height - height of el in pixel
+        4) sprite - sprite using in animation
+            1] cellSize - size of sprite cell
+                width - width of cell in pixel
+                height - height of cell in pixel
+            2] url - url of sprite image
 
-SpriteAnimation.removeAnimation
+###SpriteAnimation.removeAnimation
 
- * name - name of animation to remove
+    1. name - name of animation to remove
 
-SpriteAnimation.start
+###SpriteAnimation.start
 
- * name - name of animation to play
+    1. name - name of animation to play
+    
+##Example
+
+###HTML
+
+    <div id="test"></div>
+
+###Javascipt
+
+    SpriteAnimator.addAnimation('test', {
+        selector:'#test',
+        duration:0.5,
+        size: {
+            width: 200,
+            height: 2000,
+        },
+        sprite: {
+            cellSize: {
+                width: 200,
+                height: 200,
+            },
+            url:'test.png'
+        }
+    });
+    SpriteAnimator.start('test');
