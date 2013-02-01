@@ -49,15 +49,15 @@ var SpriteAnimator = (function() {
 		var steps = widthNum*heightNum;
 		var cssText = ['<style type="text/css" id="spriteani-'+name+'-sheet">'];
 		var ruleArr = ['@-'+prefix+'-keyframes spriteani-'+name+' {'];
-		for(var i=1;i<=widthNum;i++)
-			for(var j=1;j<=heightNum;j++)
-				ruleArr.push((i*j/steps*100)+'% { background-position:'+(configs.sprite.cellSize.width*(i-1))+'px '+(configs.sprite.cellSize.height*(j-1))+'px;}');
+		for(var j=0;j<widthNum;j++)
+			for(var i=0;i<heightNum;i++)
+				ruleArr.push(((j*widthNum+i+1)/steps*100)+'% { background-position:'+(-configs.sprite.cellSize.width*i)+'px '+(-configs.sprite.cellSize.height*j)+'px;}');
 		ruleArr.push('}');
-		var rule = ruleArr.join(' ');
+		var rule = ruleArr.join('\n');
 		cssText.push(rule);
 		var classRule = '.spriteani-'+name+'-container { width:'+configs.sprite.cellSize.width+'px; height:'+configs.sprite.cellSize.height+'px; }';
 		cssText.push(classRule);
-		var activeRule = '.spriteani-'+name+'-container.active { background: url("'+configs.sprite.url+'"); -'+prefix+'-animation: spriteani-'+name+' '+configs.duration+'s steps(1,end) infinite; }';
+		var activeRule = '.spriteani-'+name+'-container.active { background: url("'+configs.sprite.url+'"); background-position: 0px 0px; -'+prefix+'-animation: spriteani-'+name+' '+configs.duration+'s steps(1,end) infinite; }';
 		cssText.push(activeRule);
 		document.head.innerHTML += cssText.join('\n');
 		document.head.innerHTML += '</style>';
