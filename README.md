@@ -34,7 +34,7 @@ sprite animation for css3 keyframe animation
 
     <div id="test"></div>
 
-###Javascipt
+###Javascript
 
     SpriteAnimator.addAnimation('test', {
         selector:'#test',
